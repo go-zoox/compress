@@ -17,17 +17,23 @@ go get github.com/go-zoox/compress
 ## Getting Started
 
 ```go
+package main
+
 import (
-  "testing"
-  "github.com/go-zoox/compress"
+	"fmt"
+
+	"github.com/go-zoox/compress"
 )
 
-func main(t *testing.T) {
+func main() {
 	gzip := compress.NewGzip()
 	bytes := gzip.Compress([]byte("hello world"))
-	fmt.Println(string(gzip.Decompress(bytes)))
+	bytes2, _ := gzip.Decompress(bytes)
+	fmt.Println(string(bytes2))
 }
 ```
+
+Try in [Go Playground](https://go.dev/play/p/4ATlBB8BHQi).
 
 ## Inspired By
 * [cosiner/gohper](https://github.com/cosiner/gohper/blob/master/encoding/encoding.go) - common libs here
